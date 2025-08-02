@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banker - Facial Recognition Security Platform</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-content">
+                <i class="fas fa-shield-alt loading-icon"></i>
+                <h2>Banker</h2>
+                <div class="loading-spinner"></div>
+                <p>Initializing secure connection...</p>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-page" class="page hidden">
+            <div class="login-container">
+                <div class="login-card">
+                    <div class="login-header">
+                        <div class="logo-container">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h1>Banker</h1>
+                        <p>Secure Banking with Facial Recognition</p>
+                    </div>
+
+                    <form id="login-form" class="login-form">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" value="john.smith@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="password-input">
+                                <input type="password" id="password" value="password123" required>
+                                <button type="button" class="password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="login-btn">
+                            <span class="btn-text">Sign In</span>
+                            <div class="btn-loading hidden">
+                                <div class="spinner"></div>
+                                Signing in...
+                            </div>
+                        </button>
+                    </form>
+
+                    <div class="demo-notice">
+                        <p><strong>Demo Account:</strong> Use the pre-filled credentials to explore the platform.</p>
+                    </div>
+
+                    <div class="security-features">
+                        <h3>Security Features</h3>
+                        <div class="features-list">
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Facial Recognition Authentication</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Real-time Transaction Monitoring</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Multi-factor Authorization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main App -->
+        <div id="main-app" class="hidden">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-container">
+                    <div class="header-left">
+                        <div class="logo">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Banker</span>
+                        </div>
+                    </div>
+
+                    <nav class="nav desktop-nav">
+                        <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="#cards" class="nav-link" data-page="cards">
+                            <i class="fas fa-credit-card"></i>
+                            <span>My Cards</span>
+                        </a>
+                        <a href="#users" class="nav-link" data-page="users">
+                            <i class="fas fa-users"></i>
+                            <span>Authorized Users</span>
+                        </a>
+                        <a href="#transactions" class="nav-link" data-page="transactions">
+                            <i class="fas fa-list"></i>
+                            <span>Transactions</span>
+                        </a>
+                        <a href="#atm" class="nav-link" data-page="atm">
+                            <i class="fas fa-university"></i>
+                            <span>ATM Simulator</span>
+                        </a>
+                    </nav>
+
+                    <div class="header-right">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">2</span>
+                        </button>
+                        
+                        <div class="profile-menu">
+                            <button class="profile-btn">
+                                <div class="profile-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <span class="profile-name">John Smith</span>
+                            </button>
+                            <div class="profile-dropdown hidden">
+                                <div class="profile-info">
+                                    <p class="profile-name">John Smith</p>
+                                    <p class="profile-email">john.smith@example.com</p>
+                                </div>
+                                <button class="logout-btn">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Sign out</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="mobile-menu-btn">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Navigation -->
+                <nav class="mobile-nav hidden">
+                    <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#cards" class="nav-link" data-page="cards">
+                        <i class="fas fa-credit-card"></i>
+                        <span>My Cards</span>
+                    </a>
+                    <a href="#users" class="nav-link" data-page="users">
+                        <i class="fas fa-users"></i>
+                        <span>Authorized Users</span>
+                    </a>
+                    <a href="#transactions" class="nav-link" data-page="transactions">
+                        <i class="fas fa-list"></i>
+                        <span>Transactions</span>
+                    </a>
+                    <a href="#atm" class="nav-link" data-page="atm">
+                        <i class="fas fa-university"></i>
+                        <span>ATM Simulator</span>
+                    </a>
+                </nav>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="container">
+                    <!-- Dashboard Page -->
+                    <div id="dashboard-page" class="page-content">
+                        <div class="welcome-banner">
+                            <div class="welcome-content">
+                                <div>
+                                    <h1>Welcome back, John!</h1>
+                                    <p>Your account is secure and all systems are operational.</p>
+                                </div>
+                                <i class="fas fa-shield-alt welcome-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <div class="stat-icon blue">
+                                        <i class="fas fa-credit-card"></i>
+                                    </div>
+                                    <span class="stat-value">2</span>
+                                </div>
+                                <h3>Active Cards</h3>
+                                <p>+2 this month</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <div class="stat-icon green">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <span class="stat-value" id="authorized-users-count">2</span>
+                                </div>
+                                <h3>Authorized Users</h3>
+                                <p>+1 this week</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <div class="stat-icon orange">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <span class="stat-value" id="pending-count">1</span>
+                                </div>
+                                <h3>Pending Approvals</h3>
+                                <p>Needs attention</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <div class="stat-icon purple">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <span class="stat-value" id="transactions-count">3</span>
+                                </div>
+                                <h3>This Month</h3>
+                                <p>+12% from last month</p>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-grid">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h2>Recent Transactions</h2>
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div id="recent-transactions" class="transactions-list">
+                                    <!-- Transactions will be populated by JavaScript -->
+                                </div>
+                            </div>
+
+                            <div class="dashboard-card">
+                                <h2>Quick Actions</h2>
+                                <div class="quick-actions">
+                                    <button class="action-btn blue" data-action="add-card">
+                                        <i class="fas fa-credit-card"></i>
+                                        <div>
+                                            <p>Add New Card</p>
+                                            <span>Register a new debit card</span>
+                                        </div>
+                                    </button>
+                                    <button class="action-btn green" data-action="add-user">
+                                        <i class="fas fa-users"></i>
+                                        <div>
+                                            <p>Add Authorized User</p>
+                                            <span>Enroll with facial recognition</span>
+                                        </div>
+                                    </button>
+                                    <button class="action-btn orange" data-action="review-transactions">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <div>
+                                            <p>Review Pending</p>
+                                            <span>Approve or deny attempts</span>
+                                        </div>
+                                    </button>
+                                    <button class="action-btn purple" data-action="security-settings">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <div>
+                                            <p>Security Settings</p>
+                                            <span>Manage preferences</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="security-status">
+                            <h2>Security Status</h2>
+                            <div class="security-grid">
+                                <div class="security-item">
+                                    <div class="security-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div>
+                                        <p>Facial Recognition</p>
+                                        <span>Active & Secure</span>
+                                    </div>
+                                </div>
+                                <div class="security-item">
+                                    <div class="security-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div>
+                                        <p>Email Notifications</p>
+                                        <span>Enabled</span>
+                                    </div>
+                                </div>
+                                <div class="security-item">
+                                    <div class="security-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div>
+                                        <p>Account Protection</p>
+                                        <span>Maximum Security</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cards Page -->
+                    <div id="cards-page" class="page-content hidden">
+                        <div class="page-header">
+                            <div>
+                                <h1>My Debit Cards</h1>
+                                <p>Manage your debit cards and security settings</p>
+                            </div>
+                            <button class="btn-primary" id="add-card-btn">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Card</span>
+                            </button>
+                        </div>
+
+                        <div id="cards-grid" class="cards-grid">
+                            <!-- Cards will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Users Page -->
+                    <div id="users-page" class="page-content hidden">
+                        <div class="page-header">
+                            <div>
+                                <h1>Authorized Users</h1>
+                                <p>Manage users who can access your debit cards</p>
+                            </div>
+                            <button class="btn-primary" id="add-user-btn">
+                                <i class="fas fa-plus"></i>
+                                <span>Add User</span>
+                            </button>
+                        </div>
+
+                        <div id="users-grid" class="users-grid">
+                            <!-- Users will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Transactions Page -->
+                    <div id="transactions-page" class="page-content hidden">
+                        <div class="page-header">
+                            <div>
+                                <h1>Transaction History</h1>
+                                <p>Monitor and manage all card transactions</p>
+                            </div>
+                            <div class="page-actions">
+                                <div class="pending-badge" id="pending-transactions-badge">
+                                    <span>1 pending approval</span>
+                                </div>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-download"></i>
+                                    <span>Export</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="filters-bar">
+                            <div class="filter-group">
+                                <i class="fas fa-filter"></i>
+                                <select id="transaction-filter">
+                                    <option value="all">All Transactions</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="denied">Denied</option>
+                                </select>
+                            </div>
+                            <div class="search-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="transaction-search" placeholder="Search transactions...">
+                            </div>
+                        </div>
+
+                        <div id="transactions-list" class="transactions-list">
+                            <!-- Transactions will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- ATM Simulator Page -->
+                    <div id="atm-page" class="page-content hidden">
+                        <div class="page-header center">
+                            <div>
+                                <h1>ATM Simulator</h1>
+                                <p>Test the facial recognition security system</p>
+                            </div>
+                        </div>
+
+                        <div class="atm-container">
+                            <div class="atm-machine">
+                                <div class="atm-screen">
+                                    <div id="atm-display" class="atm-display">
+                                        <!-- ATM interface will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                                <div class="atm-controls">
+                                    <button class="atm-btn cancel" id="atm-cancel">Cancel</button>
+                                </div>
+                            </div>
+
+                            <div class="atm-features">
+                                <div class="feature-card">
+                                    <i class="fas fa-lock"></i>
+                                    <p>Secure Connection</p>
+                                    <span>256-bit encryption</span>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Facial Recognition</p>
+                                    <span>AI-powered security</span>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p>Real-time Monitoring</p>
+                                    <span>24/7 fraud detection</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Modals -->
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <!-- Add Card Modal -->
+            <div id="add-card-modal" class="modal hidden">
+                <div class="modal-header">
+                    <h2>Add New Debit Card</h2>
+                    <button class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="add-card-form" class="modal-form">
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-type">Card Type</label>
+                        <select id="card-type" required>
+                            <option value="">Select card type</option>
+                            <option value="Visa Platinum">Visa Platinum</option>
+                            <option value="Visa Gold">Visa Gold</option>
+                            <option value="Mastercard Platinum">Mastercard Platinum</option>
+                            <option value="Mastercard Gold">Mastercard Gold</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Card</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Add User Modal -->
+            <div id="add-user-modal" class="modal hidden">
+                <div class="modal-header">
+                    <h2>Add Authorized User</h2>
+                    <button class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="add-user-form" class="modal-form">
+                    <div class="form-group">
+                        <label for="user-name">Full Name</label>
+                        <input type="text" id="user-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">Email Address</label>
+                        <input type="email" id="user-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-phone">Phone Number</label>
+                        <input type="tel" id="user-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Access</label>
+                        <div id="card-access-list" class="checkbox-list">
+                            <!-- Card access options will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                        <button type="submit" class="btn-primary">Add User & Enroll Face</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Facial Enrollment Modal -->
+            <div id="facial-enrollment-modal" class="modal facial-modal hidden">
+                <div class="modal-header">
+                    <h2>Facial Recognition Enrollment</h2>
+                    <button class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-content">
+                    <div class="camera-container">
+                        <video id="enrollment-video" class="camera-preview" autoplay muted></video>
+                        <canvas id="enrollment-canvas" class="hidden"></canvas>
+                        <div id="camera-overlay" class="camera-overlay">
+                            <div class="face-outline"></div>
+                            <p id="enrollment-instruction">Position your face within the outline</p>
+                        </div>
+                        <div id="enrollment-progress" class="enrollment-progress hidden">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <p>Capturing facial data... <span id="progress-text">0%</span></p>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                        <button type="button" class="btn-primary" id="start-enrollment">Start Enrollment</button>
+                        <button type="button" class="btn-primary hidden" id="complete-enrollment">Complete Enrollment</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ATM Camera Modal -->
+            <div id="atm-camera-modal" class="modal facial-modal hidden">
+                <div class="modal-header">
+                    <h2>ATM Facial Verification</h2>
+                    <button class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-content">
+                    <div class="camera-container">
+                        <video id="atm-video" class="camera-preview" autoplay muted></video>
+                        <canvas id="atm-canvas" class="hidden"></canvas>
+                        <div id="atm-camera-overlay" class="camera-overlay">
+                            <div class="face-outline"></div>
+                            <p id="atm-instruction">Look directly at the camera</p>
+                        </div>
+                        <div id="verification-result" class="verification-result hidden">
+                            <div class="result-icon">
+                                <i class="fas fa-check-circle success-icon hidden"></i>
+                                <i class="fas fa-times-circle error-icon hidden"></i>
+                            </div>
+                            <p id="verification-message"></p>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                        <button type="button" class="btn-primary" id="capture-face">Capture & Verify</button>
+                        <button type="button" class="btn-primary hidden" id="proceed-transaction">Proceed</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/faceRecognition.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/pages.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
